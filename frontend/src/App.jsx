@@ -11,7 +11,7 @@ function App() {
       setLoading(true);
       setResult(null); // Clear previous result
       const csrfToken = Cookies.get('csrftoken');
-      const response = await fetch('http://localhost:8000/api/extract_text/', {
+      const response = await fetch('https://your-backend-url/api/extract_text/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
