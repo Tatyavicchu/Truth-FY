@@ -11,7 +11,7 @@ function App() {
       setLoading(true);
       setResult(null); // Clear previous result
       const csrfToken = Cookies.get('csrftoken');
-      const response = await fetch('https://your-backend-url/api/extract_text/', {
+      const response = await fetch('http://127.0.0.1:8000/api/extract_text/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -23,9 +23,9 @@ function App() {
       console.log(data);
 
       if (data.prediction === 1) {
-        setResult('This news article seems **FAKE** 🚨');
+        setResult('This news article seems **FAKE**  ');
       } else if (data.prediction === 0) {
-        setResult('This news article seems **REAL** ✅');
+        setResult('This news article seems **REAL** ');
       } else {
         setResult('Could not determine the authenticity.');
       }
