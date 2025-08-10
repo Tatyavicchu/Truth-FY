@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import Cookies from 'js-cookie';
 
 function App() {
   const [link, setLink] = useState('');
@@ -10,15 +9,15 @@ function App() {
     try {
       setLoading(true);
       setResult(null); // Clear previous result
-      const csrfToken = Cookies.get('csrftoken');
-      const response = await fetch('http://127.0.0.1:8000/api/extract_text/', {
+
+      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/extract_text/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'X-CSRFToken': csrfToken,
         },
         body: JSON.stringify({ link: link }),
       });
+
       const data = await response.json();
       console.log(data);
 
@@ -44,16 +43,16 @@ function App() {
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         minHeight: '100vh',
-        // color: 'white', // Adjust text color to stand out on the background
         padding: '20px'
       }}>
         <div className="flex justify-center items-center mt-10">
           <h1 className="font-extrabold text-6xl text-red-600">📰 TruthiFY</h1>
         </div>
+
         <div className="text-center my-10">
           <h1 className="text-3xl font-extrabold underline">Welcome to <span className="font-bold text-red-500 bg-black px-2">TruthiFY</span> – Your Trusted Fake News Checker!</h1>
-          <p className="mt-4 text-xl font-bold text-">
-            <span className='bg-white'>In today's fast-paced digital world, misinformation spreads like wildfire.</span> 
+          <p className="mt-4 text-xl font-bold">
+            <span className='bg-white'>In today's fast-paced digital world, misinformation spreads like wildfire. </span>
             <span className='bg-white'>TruthiFY is here to help you navigate the news landscape with confidence. </span>
             <span className='bg-white'>Our advanced AI model analyzes news articles and provides you with a quick </span>
             <span className='bg-white'>assessment of their authenticity. Just paste the link to the article, and <span className='bg-red-500 text-white'>let us do the rest!</span></span>
@@ -92,7 +91,6 @@ function App() {
           </div>
         )}
 
-        {/* Add some quick styles for loader */}
         <style>{`
           .loader {
             border-top-color: #3498db;
