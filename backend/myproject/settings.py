@@ -16,8 +16,9 @@ DEBUG = config('DJANGO_DEBUG', default=True, cast=bool)
 ALLOWED_HOSTS = config("DJANGO_ALLOWED_HOSTS", default="localhost,127.0.0.1").split(",")
 
 # CORS settings for allowing frontend access
-CORS_ALLOWED_ORIGINS = config("CORS_ALLOWED_ORIGINS", default="http://localhost:5173").split(",")
-CORS_ALLOW_ALL_ORIGINS = False
+CORS_ALLOWED_ORIGINS = [
+     "https://truth-fy.vercel.app",
+]
 
 # Application definition
 INSTALLED_APPS = [
