@@ -17,8 +17,10 @@ ALLOWED_HOSTS = config("DJANGO_ALLOWED_HOSTS", default="localhost,127.0.0.1").sp
 
 # CORS settings for allowing frontend access
 CORS_ALLOWED_ORIGINS = [
-     "https://truth-fy.vercel.app",
+    "https://truth-fy.vercel.app",  
+    "https://truth-7g4pntjyg-mohit-bhandaris-projects-7425abde.vercel.app", 
 ]
+
 
 # Application definition
 INSTALLED_APPS = [
